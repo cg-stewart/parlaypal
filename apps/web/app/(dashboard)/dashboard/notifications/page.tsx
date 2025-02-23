@@ -1,13 +1,6 @@
 "use client";
 
 import * as React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card";
 import { Bell, DollarSign, AlertTriangle } from "lucide-react";
 
 type NotificationType = {
@@ -55,25 +48,24 @@ export default function NotificationsPage() {
         {notifications.map((notification) => {
           const Icon = notification.icon;
           return (
-            <div key={notification.id}>
-              <Card className="bg-gray-800 border-green-400">
-                <CardHeader className="flex flex-row items-center space-x-4 pb-2">
-                  <div className="flex items-center space-x-4">
-                    <Icon className="h-6 w-6 text-green-400" />
-                    <div>
-                      <CardTitle className="text-lg font-semibold text-white">
-                        {notification.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm text-gray-400">
-                        {notification.date}
-                      </CardDescription>
-                    </div>
+            <div
+              key={notification.id}
+              className="bg-gray-800 border border-green-400 rounded-lg p-6"
+            >
+              <div className="flex flex-row items-center space-x-4 pb-2">
+                <div className="flex items-center space-x-4">
+                  <Icon className="h-6 w-6 text-green-400" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {notification.title}
+                    </h3>
+                    <p className="text-sm text-gray-400">{notification.date}</p>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-white">{notification.description}</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
+              <div className="pt-4">
+                <p className="text-white">{notification.description}</p>
+              </div>
             </div>
           );
         })}
